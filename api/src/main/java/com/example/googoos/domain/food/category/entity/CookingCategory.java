@@ -4,10 +4,12 @@ import com.example.googoos.domain.food.cooking.entity.Cooking;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
