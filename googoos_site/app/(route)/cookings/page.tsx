@@ -1,22 +1,26 @@
 "use client";
 import Layout from "@/app/_components/Layout";
+import { fetchFoodCategories } from "@/app/_service/cookService";
 import { List, ListGroup, ListItem } from "konsta/react";
 
-export default function Home() {
+async function FoodCategories() {
+  const foodCategories = await fetchFoodCategories();
+
+  return foodCategories.map((play) => (
+    <ListGroup>
+      <ListItem title={play.categoryName} groupTitle contacts />
+      {play.cookingList.map((cooking) => (
+        <ListItem title={cooking.cookingName} contacts />
+      ))}
+    </ListGroup>
+  ));
+}
+
+export default async function CookingListPage() {
   return (
     <Layout>
       <List strongIos>
-        <ListGroup>
-          <ListItem title="A" groupTitle contacts />
-          <ListItem title="Aaron" contacts />
-          <ListItem title="Abbie" contacts />
-          <ListItem title="Adam" contacts />
-          <ListItem title="Adele" contacts />
-          <ListItem title="Agatha" contacts />
-          <ListItem title="Agnes" contacts />
-          <ListItem title="Albert" contacts />
-          <ListItem title="Alexander" contacts />
-        </ListGroup>
+        <FoodCategories />
       </List>
     </Layout>
   );
