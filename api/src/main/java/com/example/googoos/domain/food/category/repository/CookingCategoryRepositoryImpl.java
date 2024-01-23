@@ -21,7 +21,12 @@ public class CookingCategoryRepositoryImpl implements CookingCategoryRepositoryC
 
     @Override
     public List<CookingCategoryDto> findAllCustom() {
-        List<CookingCategory> cookingCategories = jpaQueryFactory.selectFrom(cookingCategory).fetch();
+        List<CookingCategory> cookingCategories = jpaQueryFactory
+                .selectFrom(cookingCategory)
+                .leftJoin(cookingCategory.cookingList, cooking)
+                .fetchJoin()
+                .fetch();
+        
         return cookingCategories.stream().map(v -> new CookingCategoryDto(
                 v.getCategoryName(),
                 v.getCookingList().stream().map(v1 -> new CookingCategoryDto.Cooking(
