@@ -1,4 +1,4 @@
-package com.example.googoos_api;
+package com.example.googoos;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
