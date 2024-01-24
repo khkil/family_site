@@ -3,6 +3,8 @@ package com.example.googoos.domain.food.category.repository;
 import com.example.googoos.domain.food.category.dto.CookingCategoryDto;
 
 
+import com.example.googoos.domain.food.category.dto.QCookingCategoryDto;
+import com.example.googoos.domain.food.category.dto.QCookingCategoryDto_Cooking;
 import com.example.googoos.domain.food.category.entity.CookingCategory;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -21,18 +23,14 @@ public class CookingCategoryRepositoryImpl implements CookingCategoryRepositoryC
 
     @Override
     public List<CookingCategoryDto> findAllCustom() {
-        List<CookingCategory> cookingCategories = jpaQueryFactory
+        return jpaQueryFactory
                 .selectFrom(cookingCategory)
                 .leftJoin(cookingCategory.cookingList, cooking)
-                .fetchJoin()
-                .fetch();
-        
-        return cookingCategories.stream().map(v -> new CookingCategoryDto(
-                v.getCategoryName(),
-                v.getCookingList().stream().map(v1 -> new CookingCategoryDto.Cooking(
-                        v1.getId(),
-                        v1.getCookingName()
-                )).toList()
-        )).toList();
+                .transform(groupBy(cookingCategory.id).list(
+                        new QCookingCategoryDto(cookingCategory.categoryName, list(new QCookingCategoryDto_Cooking(
+                                cooking.id,
+                                cooking.cookingName
+                        )))
+                ));
     }
 }
