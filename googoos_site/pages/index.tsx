@@ -1,5 +1,5 @@
 "use client";
-import Layout from "@/app/_components/Layout";
+import Layout from "@/components/Layout";
 import { BlockTitle, List, ListItem } from "konsta/react";
 import { useRouter } from "next/navigation";
 
