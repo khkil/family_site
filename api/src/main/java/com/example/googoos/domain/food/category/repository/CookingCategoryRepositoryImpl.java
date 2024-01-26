@@ -26,6 +26,7 @@ public class CookingCategoryRepositoryImpl implements CookingCategoryRepositoryC
         return jpaQueryFactory
                 .selectFrom(cookingCategory)
                 .leftJoin(cookingCategory.cookingList, cooking)
+                .orderBy(cookingCategory.categoryName.asc(), cooking.cookingName.asc())
                 .transform(groupBy(cookingCategory.id).list(
                         new QCookingCategoryDto(cookingCategory.categoryName, list(new QCookingCategoryDto_Cooking(
                                 cooking.id,
