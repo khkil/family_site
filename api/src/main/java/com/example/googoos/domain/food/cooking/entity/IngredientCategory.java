@@ -1,13 +1,12 @@
-package com.example.googoos.domain.food.ingredient.entity;
+package com.example.googoos.domain.food.cooking.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -19,7 +18,8 @@ public class IngredientCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String ingredientName;
+    private String categoryName;
 
-    private String description;
+    @OneToMany
+    private List<CookingIngredient> ingredients;
 }

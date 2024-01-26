@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,5 +21,8 @@ public class Cooking {
     private String cookingName;
 
     @ManyToOne
-    CookingCategory cookingCategory;
+    private CookingCategory cookingCategory;
+
+    @OneToMany
+    private List<CookingIngredient> cookingIngredients;
 }
