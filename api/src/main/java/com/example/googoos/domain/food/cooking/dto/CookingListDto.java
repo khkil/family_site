@@ -1,18 +1,17 @@
-package com.example.googoos.domain.food.category.dto;
+package com.example.googoos.domain.food.cooking.dto;
 
 import com.querydsl.core.annotations.QueryProjection;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class CookingCategoryDto {
+public class CookingListDto {
     private String categoryName;
     private List<Cooking> cookingList;
 
     @QueryProjection
-    public CookingCategoryDto(String categoryName, List<Cooking> cookingList) {
+    public CookingListDto(String categoryName, List<Cooking> cookingList) {
         this.categoryName = categoryName;
         this.cookingList = cookingList;
     }

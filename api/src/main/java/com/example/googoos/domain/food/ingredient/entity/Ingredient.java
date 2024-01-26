@@ -1,4 +1,4 @@
-package com.example.googoos.domain.food.cooking.entity;
+package com.example.googoos.domain.food.ingredient.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,13 +11,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Cooking {
+public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String cookingName;
+    private String ingredientName;
 
-    @ManyToOne
-    CookingCategory cookingCategory;
+    private String description;
 }

@@ -15,7 +15,7 @@ interface CookingProps {
 }
 
 export const getServerSideProps = async () => {
-  const cookingCategories = await fetchCookingCategories();
+  const { data: cookingCategories } = await fetchCookingCategories();
   return {
     props: {
       cookingCategories,
@@ -27,7 +27,7 @@ const CookingList = ({ cookingList }: CookingProps) => {
   const router = useRouter();
 
   return cookingList.map(({ id, cookingName }: Cooking) => (
-    <ListItem key={id} title={cookingName} contacts link onClick={() => router.push(`/cookings/${id}`)} />
+    <ListItem key={id} title={cookingName} contacts link onClick={() => router.push(`/cooking/${id}`)} />
   ));
 };
 
@@ -54,6 +54,7 @@ export default function CookingListPage({ cookingCategories }: CategoryProps) {
     <Layout>
       <div className="mt-5">
         <Searchbar
+          placeholder={"검색"}
           onInput={(e) => {
             setSearchText(e.target.value);
           }}
@@ -61,13 +62,11 @@ export default function CookingListPage({ cookingCategories }: CategoryProps) {
           onClear={() => {
             setSearchText("");
           }}
-          disableButton
-          disableButtonText="취소"
         />
       </div>
       <List strongIos>
         {notFound ? (
-          <ListItem title="Nothing found" className="text-center" />
+          <ListItem title="검색결과를 찾을수 없습니다." className="text-center" />
         ) : (
           filteredCookingList.map(({ categoryName, cookingList }: CookingCategory, index: Key) => (
             <ListGroup key={index}>

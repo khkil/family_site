@@ -28,30 +28,19 @@ export const searchFirstLetter = (target: string, text: string) => {
       const dTargetIdx = charIdx + correctIdx;
 
       for (let dIdx = 0; dIdx < dText[charIdx].length; dIdx++) {
-        // check both disassembled characters array
-        if (
-          // (Hangul.isComplete(text[charIdx]) &&
-          // charIdx < dText.length - 1 &&
-          // dTarget[dTargetIdx].length !== dText[charIdx].length) || // allow rough typos
-          dTarget[dTargetIdx][dIdx] !== dText[charIdx][dIdx]
-        ) {
+        if (dTarget[dTargetIdx][dIdx] !== dText[charIdx][dIdx]) {
           check = false;
-
-          // check if disassembled last character same as next character's cho-sung
           if (
-            // dText.length - 1 === charIdx && // allow rough typos
             dIdx === dText[charIdx].length - 1 &&
             Hangul.isCho(dText[charIdx][dIdx]) &&
             dTarget[dTargetIdx + 1] &&
             dTarget[dTargetIdx + 1][0] === dText[charIdx][dIdx]
           )
             check = true;
-
           break;
         }
       }
 
-      // again check
       if (check === false) {
         correctIdx = choTarget.indexOf(choText, correctIdx + 1);
         break;

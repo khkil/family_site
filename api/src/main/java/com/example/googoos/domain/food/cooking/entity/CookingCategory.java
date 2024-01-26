@@ -1,4 +1,4 @@
-package com.example.googoos.domain.food.category.entity;
+package com.example.googoos.domain.food.cooking.entity;
 
 import com.example.googoos.domain.food.cooking.entity.Cooking;
 import jakarta.persistence.*;

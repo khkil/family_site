@@ -9,7 +9,7 @@ export default function Home() {
     <Layout>
       <BlockTitle>기능 목록</BlockTitle>
       <List strongIos outlineIos>
-        <ListItem title="요리 레시피" link onClick={() => router.push("/cookings")} />
+        <ListItem title="요리 레시피" link onClick={() => router.push("/cooking")} />
       </List>
     </Layout>
   );
