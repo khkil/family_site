@@ -20,6 +20,6 @@ public class IngredientCategory {
 
     private String categoryName;
 
-    @OneToMany
+    @OneToMany(mappedBy = "ingredientCategory")
     private List<CookingIngredient> ingredients;
 }

@@ -23,6 +23,6 @@ public class Cooking {
     @ManyToOne
     private CookingCategory cookingCategory;
 
-    @OneToMany
+    @OneToMany(mappedBy = "cooking")
     private List<CookingIngredient> cookingIngredients;
 }

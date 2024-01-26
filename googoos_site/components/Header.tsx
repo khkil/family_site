@@ -1,12 +1,16 @@
 import { Link, Navbar } from "konsta/react";
 import { useRouter } from "next/router";
+interface Props {
+  title: string | undefined;
+  subtitle: string;
+}
 
-const Header = () => {
+const Header = ({ title, subtitle }: Props) => {
   const router = useRouter();
   return (
     <Navbar
-      title={process.env.NEXT_PUBLIC_TITLE}
-      subtitle="구구"
+      title={title}
+      subtitle={subtitle}
       className="top-0 sticky"
       left={
         <Link navbar onClick={() => router.back()}>

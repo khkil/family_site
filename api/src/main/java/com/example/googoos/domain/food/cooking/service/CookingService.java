@@ -1,5 +1,6 @@
 package com.example.googoos.domain.food.cooking.service;
 
+import com.example.googoos.domain.food.cooking.dto.CookingDetailDto;
 import com.example.googoos.domain.food.cooking.dto.CookingListDto;
 import com.example.googoos.domain.food.cooking.repository.CookingRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,5 +15,9 @@ public class CookingService {
 
     public List<CookingListDto> findAll() {
         return cookingRepository.findAllGroupByCategory();
+    }
+
+    public CookingDetailDto findById(Long id) {
+        return cookingRepository.findByIdWithIngredient(id).orElseThrow(() -> new IllegalArgumentException("유효하지 않은 요리 입니다."));
     }
 }

@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { List } from "konsta/react";
+import { BlockTitle, List, ListItem } from "konsta/react";
 import { useRouter } from "next/router";
 
 export default function CookingListPage() {
@@ -7,7 +7,12 @@ export default function CookingListPage() {
 
   return (
     <Layout>
-      <List strongIos></List>
+      <BlockTitle>Strong Inset List</BlockTitle>
+      <List strong inset>
+        <ListItem title="Item 1" />
+        <ListItem title="Item 2" />
+        <ListItem title="Item 3" />
+      </List>
     </Layout>
   );
 }
