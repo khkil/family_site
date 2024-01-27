@@ -8,22 +8,33 @@ import java.util.Set;
 
 @Data
 public class CookingDetailDto {
+    private Long id;
     private String cookingName;
     private Set<IngredientCategory> ingredientCategories;
 
+
     @QueryProjection
-    public CookingDetailDto(String cookingName, Set<IngredientCategory> ingredientCategories) {
+    public CookingDetailDto(Long id, String cookingName, Set<IngredientCategory> ingredientCategories) {
+        this.id = id;
         this.cookingName = cookingName;
         this.ingredientCategories = ingredientCategories;
     }
 
     @Data
     public static class IngredientCategory {
+        private Long id;
         private String categoryName;
         private List<Ingredient> ingredients;
 
-        @QueryProjection
-        public IngredientCategory(String categoryName, List<Ingredient> ingredients) {
+        @QueryProjection // Cooking > IngredientCategory mapping
+        public IngredientCategory(Long id, String categoryName) {
+            this.id = id;
+            this.categoryName = categoryName;
+        }
+
+        @QueryProjection // IngredientCategory > Ingredient mapping
+        public IngredientCategory(Long id, String categoryName, List<Ingredient> ingredients) {
+            this.id = id;
             this.categoryName = categoryName;
             this.ingredients = ingredients;
         }
@@ -31,11 +42,15 @@ public class CookingDetailDto {
 
     @Data
     public static class Ingredient {
+        private Long cookingId;
+        private Long categoryId;
         private String ingredientName;
         private String description;
 
         @QueryProjection
-        public Ingredient(String ingredientName, String description) {
+        public Ingredient(Long cookingId, Long categoryId, String ingredientName, String description) {
+            this.cookingId = cookingId;
+            this.categoryId = categoryId;
             this.ingredientName = ingredientName;
             this.description = description;
         }

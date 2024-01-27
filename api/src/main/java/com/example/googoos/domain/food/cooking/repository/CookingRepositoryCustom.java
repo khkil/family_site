@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface CookingRepositoryCustom {
     List<CookingListDto> findAllGroupByCategory();
 
-    Optional<CookingDetailDto> findByIdWithIngredient(Long id);
+    CookingDetailDto findByIdWithIngredient(Long id);
 }

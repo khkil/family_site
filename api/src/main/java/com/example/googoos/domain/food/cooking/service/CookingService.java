@@ -18,6 +18,6 @@ public class CookingService {
     }
 
     public CookingDetailDto findById(Long id) {
-        return cookingRepository.findByIdWithIngredient(id).orElseThrow(() -> new IllegalArgumentException("유효하지 않은 요리 입니다."));
+        return cookingRepository.findByIdWithIngredient(id);
     }
 }
