@@ -73,7 +73,7 @@ public class CookingRepositoryImpl implements CookingRepositoryCustom {
                 category -> category.setIngredients(
                         ingredients.stream().filter(ingredient ->
                                 Objects.equals(id, ingredient.getCookingId()) &&
-                                        Objects.equals(category.getId(), ingredient.getCategoryId())
+                                        Objects.equals(category.getId(), ingredient.getIngredientCategoryId())
                         ).toList()
                 )
         );

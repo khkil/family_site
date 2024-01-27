@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { fetchCookingCategories } from "@/service/cookService";
+import { fetchCookingList } from "@/service/cookService";
 import { Cooking, CookingCategory } from "@/types/foodType";
 import { searchFirstLetter } from "@/utils/stringUtil";
 import { List, ListGroup, ListItem, Searchbar } from "konsta/react";
@@ -15,7 +15,7 @@ interface CookingProps {
 }
 
 export const getServerSideProps = async () => {
-  const { data: cookingCategories } = await fetchCookingCategories();
+  const { data: cookingCategories } = await fetchCookingList();
   return {
     props: {
       cookingCategories,

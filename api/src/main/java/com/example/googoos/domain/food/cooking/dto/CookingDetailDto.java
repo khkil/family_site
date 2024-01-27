@@ -43,14 +43,14 @@ public class CookingDetailDto {
     @Data
     public static class Ingredient {
         private Long cookingId;
-        private Long categoryId;
+        private Long ingredientCategoryId;
         private String ingredientName;
         private String description;
 
         @QueryProjection
-        public Ingredient(Long cookingId, Long categoryId, String ingredientName, String description) {
+        public Ingredient(Long cookingId, Long ingredientCategoryId, String ingredientName, String description) {
             this.cookingId = cookingId;
-            this.categoryId = categoryId;
+            this.ingredientCategoryId = ingredientCategoryId;
             this.ingredientName = ingredientName;
             this.description = description;
         }

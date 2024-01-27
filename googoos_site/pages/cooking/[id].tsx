@@ -1,18 +1,37 @@
 import Layout from "@/components/Layout";
+import { fetchCookingDetail } from "@/service/cookService";
+import { CookingDetail, Ingredient, IngredientCategory } from "@/types/foodType";
 import { BlockTitle, List, ListItem } from "konsta/react";
-import { useRouter } from "next/router";
+import { GetServerSideProps } from "next";
 
-export default function CookingListPage() {
-  const router = useRouter();
+interface Props {
+  cookingDetail: CookingDetail;
+}
 
+export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
+  const cookingId = parseInt(context.query?.id as string);
+
+  const { data: cookingDetail } = await fetchCookingDetail(cookingId);
+  return {
+    props: {
+      cookingDetail,
+    },
+  };
+};
+
+export default function CookingListPage({ cookingDetail: { ingredientCategories } }: Props) {
   return (
     <Layout>
-      <BlockTitle>Strong Inset List</BlockTitle>
-      <List strong inset>
-        <ListItem title="Item 1" />
-        <ListItem title="Item 2" />
-        <ListItem title="Item 3" />
-      </List>
+      {ingredientCategories.map(({ id, categoryName, ingredients }: IngredientCategory) => (
+        <div key={id}>
+          <BlockTitle>{categoryName}</BlockTitle>
+          <List strong inset>
+            {ingredients.map(({ cookingId, ingredientCategoryId, ingredientName, description }: Ingredient) => (
+              <ListItem key={`${cookingId}_${ingredientCategoryId}`} title={ingredientName} subtitle={description} />
+            ))}
+          </List>
+        </div>
+      ))}
     </Layout>
   );
 }
