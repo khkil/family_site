@@ -1,6 +1,7 @@
 package com.example.googoos.domain.food.cooking.service;
 
 import com.example.googoos.domain.food.cooking.dto.CookingDetailDto;
+import com.example.googoos.domain.food.cooking.dto.CookingIngredientDto;
 import com.example.googoos.domain.food.cooking.dto.CookingListDto;
 import com.example.googoos.domain.food.cooking.repository.CookingRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,10 @@ public class CookingService {
     }
 
     public CookingDetailDto findById(Long id) {
-        return cookingRepository.findByIdWithIngredient(id);
+        return cookingRepository.findByIdCustom(id);
+    }
+
+    public List<CookingIngredientDto> findIngredientsById(Long id) {
+        return cookingRepository.findIngredientsById(id);
     }
 }

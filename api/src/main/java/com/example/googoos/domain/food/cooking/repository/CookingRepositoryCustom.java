@@ -1,13 +1,15 @@
 package com.example.googoos.domain.food.cooking.repository;
 
 import com.example.googoos.domain.food.cooking.dto.CookingDetailDto;
+import com.example.googoos.domain.food.cooking.dto.CookingIngredientDto;
 import com.example.googoos.domain.food.cooking.dto.CookingListDto;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface CookingRepositoryCustom {
     List<CookingListDto> findAllGroupByCategory();
 
-    CookingDetailDto findByIdWithIngredient(Long id);
+    CookingDetailDto findByIdCustom(Long id);
+
+    List<CookingIngredientDto> findIngredientsById(Long id);
 }

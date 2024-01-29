@@ -35,8 +35,18 @@ public class CookingRepositoryImpl implements CookingRepositoryCustom {
     }
 
     @Override
-    public CookingDetailDto findByIdWithIngredient(Long id) {
-        CookingDetailDto cookingDetail = jpaQueryFactory
+    public CookingDetailDto findByIdCustom(Long id) {
+        return jpaQueryFactory
+                .selectFrom(cooking)
+                .where(cooking.id.eq(id))
+                .transform(groupBy(cooking.id).list(
+                        new QCookingDetailDto(
+                                cooking.id,
+                                cooking.cookingName
+                        )
+                ))
+                .stream().findAny().orElse(null);
+        /*CookingDetailDto cookingDetail = jpaQueryFactory
                 .selectFrom(cooking)
                 .leftJoin(cooking.cookingIngredients, cookingIngredient)
                 .leftJoin(cookingIngredient.ingredientCategory, ingredientCategory)
@@ -79,5 +89,25 @@ public class CookingRepositoryImpl implements CookingRepositoryCustom {
         );
 
         return cookingDetail;
+         */
+    }
+
+    @Override
+    public List<CookingIngredientDto> findIngredientsById(Long id) {
+        return jpaQueryFactory
+                .selectFrom(cookingIngredient)
+                .leftJoin(cookingIngredient.ingredientCategory, ingredientCategory)
+                .where(cooking.id.eq(id))
+                .transform(groupBy(ingredientCategory.id).list(
+                        new QCookingIngredientDto(
+                                ingredientCategory.id,
+                                ingredientCategory.categoryName,
+                                list(new QCookingIngredientDto_Ingredient(
+                                        cookingIngredient.id,
+                                        cookingIngredient.ingredientName,
+                                        cookingIngredient.description
+                                ))
+                        )
+                ));
     }
 }

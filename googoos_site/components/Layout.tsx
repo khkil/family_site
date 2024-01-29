@@ -6,7 +6,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <App theme="ios">
       <Page>
-        <Header title="제육볶음" subtitle="asd" />
+        <Header />
         {children}
       </Page>
     </App>

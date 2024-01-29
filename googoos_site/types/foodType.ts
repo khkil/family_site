@@ -12,7 +12,6 @@ export declare interface CookingCategory {
 export declare interface CookingDetail {
   id: number;
   cookingName: string;
-  ingredientCategories: Array<IngredientCategory>;
 }
 
 export declare interface IngredientCategory {
@@ -22,8 +21,13 @@ export declare interface IngredientCategory {
 }
 
 export declare interface Ingredient {
-  cookingId: number;
-  ingredientCategoryId: number;
+  id: number;
+  ingredientName: string;
+  description: string;
+}
+
+export declare interface Recipe {
+  id: number;
   ingredientName: string;
   description: string;
 }

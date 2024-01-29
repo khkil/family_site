@@ -2,6 +2,7 @@ package com.example.googoos.domain.food.cooking.controller;
 
 import com.example.googoos.common.ApiResponse;
 import com.example.googoos.domain.food.cooking.dto.CookingDetailDto;
+import com.example.googoos.domain.food.cooking.dto.CookingIngredientDto;
 import com.example.googoos.domain.food.cooking.dto.CookingListDto;
 import com.example.googoos.domain.food.cooking.service.CookingService;
 import lombok.RequiredArgsConstructor;
@@ -29,5 +30,11 @@ public class CookingController {
     public ResponseEntity<ApiResponse<?>> findById(@PathVariable Long id) {
         CookingDetailDto cookingDetail = cookingService.findById(id);
         return ResponseEntity.ok(ApiResponse.createSuccess(cookingDetail));
+    }
+
+    @GetMapping("/{id}/ingredients")
+    public ResponseEntity<ApiResponse<?>> findIngredientsById(@PathVariable Long id) {
+        List<CookingIngredientDto> cookingIngredients = cookingService.findIngredientsById(id);
+        return ResponseEntity.ok(ApiResponse.createSuccess(cookingIngredients));
     }
 }

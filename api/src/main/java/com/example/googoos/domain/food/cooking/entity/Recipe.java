@@ -6,26 +6,22 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-public class Cooking {
+public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String cookingName;
+    private Integer step;
+
+    private String description;
+
+    private String notice;
 
     @ManyToOne
-    private CookingCategory cookingCategory;
-
-    @OneToMany(mappedBy = "cooking")
-    private List<CookingIngredient> cookingIngredients;
-
-    @OneToMany(mappedBy = "cooking")
-    private List<Recipe> recipes;
+    private Cooking cooking;
 }

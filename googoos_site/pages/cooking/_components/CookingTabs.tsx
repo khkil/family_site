@@ -1,15 +1,40 @@
-import { Tabbar, TabbarLink } from "konsta/react";
+import { Segmented, SegmentedButton } from "konsta/react";
+import { useRouter } from "next/router";
+import { useMemo } from "react";
 
 interface Props {
-  id: Number;
+  tabIndex: number;
+  setTabIndex: (index: number) => void;
 }
 
-const CookingDetailMenuTabs = ({ id }: Props) => {
+interface Menu {
+  title: string;
+}
+
+const CookingDetailMenuTabs = ({ tabIndex, setTabIndex }: Props) => {
+  const { asPath, push } = useRouter();
+  const tabData: Array<Menu> = useMemo(
+    () => [
+      {
+        title: "재료",
+      },
+      {
+        title: "조리 과정",
+      },
+    ],
+    []
+  );
+
   return (
-    <Tabbar className="left-0 bottom-0 fixed">
-      <TabbarLink active={true} onClick={() => {}} label={"재료"} />
-      <TabbarLink active={true} onClick={() => {}} label={"조리 과정"} />
-    </Tabbar>
+    <div>
+      <Segmented strong>
+        {tabData.map(({ title }: Menu, index) => (
+          <SegmentedButton key={index} strong active={index === tabIndex} onClick={() => setTabIndex(index)}>
+            {title}
+          </SegmentedButton>
+        ))}
+      </Segmented>
+    </div>
   );
 };
 
