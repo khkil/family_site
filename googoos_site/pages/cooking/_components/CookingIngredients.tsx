@@ -9,7 +9,7 @@ interface Props {
 const Ingredients = ({ ingredientCategories }: Props): ReactElement => {
   return (
     <div>
-      {ingredientCategories.map(({ id, categoryName, ingredients }: IngredientCategory) => (
+      {ingredientCategories?.map(({ id, categoryName, ingredients }: IngredientCategory) => (
         <div key={id}>
           <BlockTitle>{categoryName}</BlockTitle>
           <List strong inset>
