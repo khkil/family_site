@@ -3,6 +3,7 @@ package com.example.googoos.domain.food.cooking.service;
 import com.example.googoos.domain.food.cooking.dto.CookingDetailDto;
 import com.example.googoos.domain.food.cooking.dto.CookingIngredientDto;
 import com.example.googoos.domain.food.cooking.dto.CookingListDto;
+import com.example.googoos.domain.food.cooking.dto.CookingRecipeDto;
 import com.example.googoos.domain.food.cooking.repository.CookingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,9 @@ public class CookingService {
 
     public List<CookingIngredientDto> findIngredientsById(Long id) {
         return cookingRepository.findIngredientsById(id);
+    }
+
+    public List<CookingRecipeDto> findRecipeById(Long id) {
+        return cookingRepository.findRecipeById(id);
     }
 }

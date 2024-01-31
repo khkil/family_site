@@ -4,6 +4,7 @@ import com.example.googoos.common.ApiResponse;
 import com.example.googoos.domain.food.cooking.dto.CookingDetailDto;
 import com.example.googoos.domain.food.cooking.dto.CookingIngredientDto;
 import com.example.googoos.domain.food.cooking.dto.CookingListDto;
+import com.example.googoos.domain.food.cooking.dto.CookingRecipeDto;
 import com.example.googoos.domain.food.cooking.service.CookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -36,5 +37,11 @@ public class CookingController {
     public ResponseEntity<ApiResponse<?>> findIngredientsById(@PathVariable Long id) {
         List<CookingIngredientDto> cookingIngredients = cookingService.findIngredientsById(id);
         return ResponseEntity.ok(ApiResponse.createSuccess(cookingIngredients));
+    }
+
+    @GetMapping("/{id}/recipe")
+    public ResponseEntity<ApiResponse<?>> findRecipeById(@PathVariable Long id) {
+        List<CookingRecipeDto> cookingRecipe = cookingService.findRecipeById(id);
+        return ResponseEntity.ok(ApiResponse.createSuccess(cookingRecipe));
     }
 }

@@ -12,6 +12,7 @@ import static com.example.googoos.domain.food.cooking.entity.QCooking.cooking;
 import static com.example.googoos.domain.food.cooking.entity.QCookingCategory.cookingCategory;
 import static com.example.googoos.domain.food.cooking.entity.QCookingIngredient.cookingIngredient;
 import static com.example.googoos.domain.food.cooking.entity.QIngredientCategory.ingredientCategory;
+import static com.example.googoos.domain.food.cooking.entity.QCookingRecipe.cookingRecipe;
 import static com.querydsl.core.group.GroupBy.*;
 
 @RequiredArgsConstructor
@@ -46,50 +47,6 @@ public class CookingRepositoryImpl implements CookingRepositoryCustom {
                         )
                 ))
                 .stream().findAny().orElse(null);
-        /*CookingDetailDto cookingDetail = jpaQueryFactory
-                .selectFrom(cooking)
-                .leftJoin(cooking.cookingIngredients, cookingIngredient)
-                .leftJoin(cookingIngredient.ingredientCategory, ingredientCategory)
-                .where(cooking.id.eq(id))
-                .transform(groupBy(cooking.id).list(
-                        new QCookingDetailDto(
-                                cooking.id,
-                                cooking.cookingName,
-                                set(new QCookingDetailDto_IngredientCategory(
-                                        ingredientCategory.id,
-                                        ingredientCategory.categoryName
-                                ))
-                        )
-                ))
-                .stream().findAny().orElse(null);
-
-        if (cookingDetail == null) return null;
-
-        List<CookingDetailDto.Ingredient> ingredients = jpaQueryFactory
-                .select(new QCookingDetailDto_Ingredient(
-                        cooking.id,
-                        ingredientCategory.id,
-                        cookingIngredient.ingredientName,
-                        cookingIngredient.description
-                ))
-                .from(cookingIngredient)
-                .leftJoin(cookingIngredient.cooking, cooking)
-                .leftJoin(cookingIngredient.ingredientCategory, ingredientCategory)
-                .where(cooking.id.eq(id))
-                .fetch();
-
-        Set<CookingDetailDto.IngredientCategory> ingredientCategories = cookingDetail.getIngredientCategories();
-        ingredientCategories.forEach(
-                category -> category.setIngredients(
-                        ingredients.stream().filter(ingredient ->
-                                Objects.equals(id, ingredient.getCookingId()) &&
-                                        Objects.equals(category.getId(), ingredient.getIngredientCategoryId())
-                        ).toList()
-                )
-        );
-
-        return cookingDetail;
-         */
     }
 
     @Override
@@ -109,5 +66,20 @@ public class CookingRepositoryImpl implements CookingRepositoryCustom {
                                 ))
                         )
                 ));
+    }
+
+    @Override
+    public List<CookingRecipeDto> findRecipeById(Long id) {
+        return jpaQueryFactory
+                .select(new QCookingRecipeDto(
+                        cookingRecipe.id,
+                        cookingRecipe.step,
+                        cookingRecipe.description,
+                        cookingRecipe.notice
+                ))
+                .from(cookingRecipe)
+                .where(cookingRecipe.cooking.id.eq(id))
+                .orderBy(cookingRecipe.step.asc())
+                .fetch();
     }
 }

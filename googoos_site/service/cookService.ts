@@ -21,3 +21,11 @@ export async function fetchCookingIngredients(id: number) {
   }
   return res.json();
 }
+
+export async function fetchCookingRecipe(id: number) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/food/cooking/${id}/recipe`);
+  if (!res.ok) {
+    throw new Error("요리 레시피 정보를 가져오는데 실패하였습니다.");
+  }
+  return res.json();
+}

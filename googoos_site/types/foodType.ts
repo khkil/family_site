@@ -28,6 +28,7 @@ export declare interface Ingredient {
 
 export declare interface Recipe {
   id: number;
-  ingredientName: string;
+  step: number;
   description: string;
+  notice: string;
 }
