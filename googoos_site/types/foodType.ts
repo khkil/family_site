@@ -30,5 +30,5 @@ export declare interface Recipe {
   id: number;
   step: number;
   description: string;
-  notice: string;
+  subDescription: string;
 }

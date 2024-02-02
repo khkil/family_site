@@ -8,13 +8,13 @@ public class RecipeDto {
     private Long id;
     private Integer step;
     private String description;
-    private String notice;
+    private String subDescription;
 
     @QueryProjection
-    public RecipeDto(Long id, Integer step, String description, String notice) {
+    public RecipeDto(Long id, Integer step, String description, String subDescription) {
         this.id = id;
         this.step = step;
         this.description = description;
-        this.notice = notice;
+        this.subDescription = subDescription;
     }
 }

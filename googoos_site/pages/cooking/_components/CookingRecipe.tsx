@@ -9,8 +9,8 @@ export default function CookingRecipe({ recipes }: Props): ReactElement {
   return (
     <div>
       <BlockTitle withBlock={false}>조리과정</BlockTitle>
-      {recipes?.map(({ id, step, description, notice }: Recipe) => (
-        <Card key={id} outline>
+      {recipes?.map(({ id, step, description, subDescription }: Recipe) => (
+        <Card key={id} footer={subDescription} outline>
           {`${step}. ${description}`}
         </Card>
       ))}

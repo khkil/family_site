@@ -13,6 +13,7 @@ import com.example.googoos.domain.inrgredient.repository.IngredientRepository;
 import com.example.googoos.domain.cooking.repository.CookingRepository;
 import com.example.googoos.domain.inrgredient.entity.Ingredient;
 import com.example.googoos.domain.inrgredient.entity.IngredientCategory;
+import com.example.googoos.domain.recipe.repository.RecipeRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +37,7 @@ public class CookingService {
     private final CookingCategoryRepository cookingCategoryRepository;
     private final IngredientCategoryRepository ingredientCategoryRepository;
     private final IngredientRepository ingredientRepository;
+    private final RecipeRepository recipeRepository;
 
     public List<CookingListDto> findAll() {
         return cookingRepository.findAllGroupByCategory();
@@ -48,6 +50,11 @@ public class CookingService {
 
     @Transactional
     public void generateRecipe(CookingGenerateDto cookingGenerateDto) {
+        String cookingName = cookingGenerateDto.getCookingName();
+        cookingRepository.findByCookingName(cookingName).ifPresent(v -> {
+            throw new IllegalStateException("이미 존재하는 요리 입니다. 요리명: " + v.getCookingName());
+        });
+
         Document document = null;
         try {
             document = Jsoup.connect(url + "/" + cookingGenerateDto.getRecipeId()).get();
@@ -57,7 +64,6 @@ public class CookingService {
 
         if (document != null) {
             String categoryName = cookingGenerateDto.getCookingCategoryName();
-            String cookingName = cookingGenerateDto.getCookingName();
 
             // 카테고리가 없다면 카테고리 생성
             CookingCategory cookingCategory = cookingCategoryRepository.findByCategoryName(categoryName)
@@ -81,7 +87,7 @@ public class CookingService {
 
             // 요리 레시피 생성
             List<Recipe> recipes = generateRecipe(document, cooking);
-            //ingredientRepository.saveAll(recipes);
+            recipeRepository.saveAll(recipes);
         }
     }
 
@@ -128,8 +134,24 @@ public class CookingService {
     private List<Recipe> generateRecipe(Document document, Cooking cooking) {
         List<Recipe> recipes = new ArrayList<>();
 
-        Element recipeArea = document.getElementById("obx_recipe_step_start");
-        System.out.println(recipeArea.html());
+        int step = 1;
+        Elements elements = document.getElementsByClass("view_step_cont");
+        for (Element element : elements) {
+            Element recipeEl = element.getElementsByClass("media-body").get(0);
+            
+            String description = recipeEl.ownText();
+            String subDescription = recipeEl.getElementsByClass("add_material").text();
+
+            Recipe recipe = Recipe
+                    .builder()
+                    .cooking(cooking)
+                    .step(step++)
+                    .description(description)
+                    .subDescription(subDescription)
+                    .build();
+
+            recipes.add(recipe);
+        }
         return recipes;
     }
 }

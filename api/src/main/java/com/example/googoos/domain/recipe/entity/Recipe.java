@@ -21,7 +21,7 @@ public class Recipe {
 
     private String description;
 
-    private String notice;
+    private String subDescription;
 
     @ManyToOne
     private Cooking cooking;

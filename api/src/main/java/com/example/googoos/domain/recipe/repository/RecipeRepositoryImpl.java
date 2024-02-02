@@ -20,7 +20,7 @@ public class RecipeRepositoryImpl implements RecipeRepositoryCustom {
                         recipe.id,
                         recipe.step,
                         recipe.description,
-                        recipe.notice
+                        recipe.subDescription
                 ))
                 .from(recipe)
                 .where(recipe.cooking.id.eq(cookingId))
