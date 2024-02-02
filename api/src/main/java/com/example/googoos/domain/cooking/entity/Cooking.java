@@ -1,5 +1,7 @@
-package com.example.googoos.domain.food.cooking.entity;
+package com.example.googoos.domain.cooking.entity;
 
+import com.example.googoos.domain.inrgredient.entity.Ingredient;
+import com.example.googoos.domain.recipe.entity.Recipe;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,9 +25,9 @@ public class Cooking {
     @ManyToOne
     private CookingCategory cookingCategory;
 
-    @OneToMany(mappedBy = "cooking")
-    private List<CookingIngredient> cookingIngredients;
+    @OneToMany(mappedBy = "cooking", cascade = CascadeType.ALL)
+    private List<Ingredient> ingredients;
 
-    @OneToMany(mappedBy = "cooking")
-    private List<CookingRecipe> cookingRecipes;
+    @OneToMany(mappedBy = "cooking", cascade = CascadeType.ALL)
+    private List<Recipe> recipes;
 }

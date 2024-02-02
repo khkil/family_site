@@ -18,6 +18,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
     SecurityFilterChain config(HttpSecurity http) throws Exception {
         return http
                 .cors(AbstractHttpConfigurer::disable)
+                .csrf(AbstractHttpConfigurer::disable)
                 .build();
     }
 }

@@ -1,0 +1,250 @@
+<div class="best_tit">
+  <b>조리순서</b><span>Steps</span>
+  <div class="best_tit_rmn">
+    <a href="javascript:void(0);" onclick="chgViewStep(1)"
+      ><img id="tabStepView1" src="https://recipe1.ezmember.co.kr/img/mobile/tab_view1.png" alt="이미지크게보기"
+    /></a>
+    <a href="javascript:void(0);" onclick="chgViewStep(2)"
+      ><img id="tabStepView2" src="https://recipe1.ezmember.co.kr/img/mobile/tab_view2.png" alt="텍스트만보기"
+    /></a>
+    <a href="javascript:void(0);" onclick="chgViewStep(3)"
+      ><img id="tabStepView3" src="https://recipe1.ezmember.co.kr/img/mobile/tab_view3_on.png" alt="이미지작게보기"
+    /></a>
+  </div>
+</div>
+<div id="stepDiv1" class="view_step_cont media step1">
+  <div id="stepdescr1" class="media-body">
+    냄비에 물(1 1/2컵=300ml), 소금(1/3T)을 넣고 센 불에서 끓어오르면 콩나물을 넣고 뚜껑을 덮어 중간 불로 4분간 삶는다.
+    <p class="step_add add_material">콩나물 2+1/2줌(200g)</p>
+    <p class="step_add add_tool"><a href="javascript:buyMaterial2('냄비','cooker');" style="color: #74b243">냄비</a></p>
+    <p class="step_add add_fire">센 불-중간 불</p>
+  </div>
+  <div id="stepimg1">
+    <img src="https://recipe1.ezmember.co.kr/cache/recipe/2016/08/26/ac202d3703d94e4440bfa16aef8578631.png" />
+  </div>
+</div>
+<div id="stepDiv2" class="view_step_cont media step2">
+  <div id="stepdescr2" class="media-body">
+    콩나물만 체로 건져낸다.
+    <p class="step_add add_tool"><a href="javascript:buyMaterial2('체','cooker');" style="color: #74b243">체</a></p>
+  </div>
+  <div id="stepimg2">
+    <img src="https://recipe1.ezmember.co.kr/cache/recipe/2016/08/26/9f1e5c59377f05441dc3bf4c0f180c9f1.png" />
+  </div>
+</div>
+<div id="stepDiv3" class="view_step_cont media step3">
+  <div id="stepdescr3" class="media-body">
+    볼에 담고 양념을 넣고 버무려 마무리.
+    <p class="step_add add_material">양념: 소금 1/4T, 고춧가루 1T, 다진마늘 1/2T, 다진파 1T, 참기름 1+1/2T, 참깨 1T</p>
+    <p class="step_add add_tool"><a href="javascript:buyMaterial2('볼','cooker');" style="color: #74b243">볼</a></p>
+  </div>
+  <div id="stepimg3">
+    <img src="https://recipe1.ezmember.co.kr/cache/recipe/2016/08/26/8d7b64df46325d2025099f91ad4bb13f1.png" />
+  </div>
+</div>
+<div id="completeimgs" class="carousel slide" data-ride="carousel" style="width: 920px; margin: 0 auto 60px">
+  <ol class="carousel-indicators">
+    <li data-target="#completeimgs" data-slide-to="0" class="active"></li>
+    <li data-target="#completeimgs" data-slide-to="1"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <div class="carouItem centercrop">
+        <img src="https://recipe1.ezmember.co.kr/cache/recipe/2016/08/26/5881a8c9e869837b29a05bda9fa919321.png" />
+      </div>
+    </div>
+    <div class="item">
+      <div class="carouItem centercrop">
+        <img src="https://recipe1.ezmember.co.kr/cache/recipe/2016/08/26/11c7fd243964ac6f7de27da986bf7baa1.png" />
+      </div>
+    </div>
+  </div>
+  <a class="left carousel-control" href="#completeimgs" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  </a>
+  <a class="right carousel-control" href="#completeimgs" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+  </a>
+</div>
+<!-- 레시피 스텝 하단 광고 -->
+<div id="divEzadArea_recipe_view_step_bottom" style="display: none; z-index: 100000; padding-left: 10px; padding-right: 20px; padding-top: 5px">
+  <div id="EZAD-view_step_bottom"></div>
+</div>
+<script>
+  var _ezad_params = { app_id: "web.com.ezhld.recipe", cmd_sub: "recipe_view_step_bottom", recipe_seq: "6855391", dev_mode: false };
+  if (_EZAD.getCookie("_ezad_hide_" + _ezad_params.cmd_sub) == "") {
+    var s2 = document.createElement("script");
+    s2.type = "text/javascript";
+    s2.src =
+      "//api.ezadsystem.com/api/api_kwd.html?cmd=ez_web&cmd_sub=" +
+      _ezad_params.cmd_sub +
+      "&aid=" +
+      _ezad_params.app_id +
+      "&recipe_seq=" +
+      _ezad_params.recipe_seq;
+    document.getElementById("EZAD-view_step_bottom").appendChild(s2);
+  }
+</script>
+<div class="blank_bottom"></div>
+<!--재료관련상품-->
+<div class="view_step" id="relationGoods" style="padding: 20px 0 0 0">
+  <div class="best_tit"><b style="color: #74b243">콩나물무침</b><b> 관련 상품</b></div>
+  <div class="common_rcp_list" style="padding: 0 25px">
+    <div class="s_list_ul_arrow"></div>
+    <ul class="common_rcp_list_ul" style="padding: 0; width: 1080px; display: inline-block; margin: 0 auto">
+      <li class="common_rcp_list_li" style="margin-right: 10px; width: 141px">
+        <a
+          href="https://ad.planbplus.co.kr/adlanding/?adid=429&amp;subid=10000recipe17&amp;landing_url=https%3A%2F%2Flink.coupang.com%2Fre%2FAFFSDP%3Flptag%3DAF0831180%26subid%3D10000recipe17%26pageKey%3D6750234704%26itemId%3D19816995290%26vendorItemId%3D86919018146%26traceid%3DV0-153-54bf4b99e1c8bf6f%26requestid%3D20240201112448761120127677%26token%3D31850B%257CGM&amp;adtype=2"
+          target="_blank"
+          class="common_rcp_link"
+        >
+          <div class="common_rcp_thumb">
+            <img
+              src="https://ads-partners.coupang.com/image1/J7yme4Ea6WrugJZ-JxdC-g6yjJ4uPJPWUkUQQ9vyYjk8T6ERjM4xaGTFmX34PrAjWvWmE35hYq5A4UTrfGGo0TS9Q16xyOeaHUpbQ47t-_Q6VIJ9y4-y-ix_faEpjr66291lAAfq5z_6KAp1Ca2FFe0nqzHVoYhjb59_B9fEToLaXrBW8LeEvr44TN3EixHTgLRSr4cUuzO9lis-rGG8Ww8IYEbe3qiTNfDzzlAw5jU7LsXbirhqgc1pr0xq4FcsTtM-pl8xgVQ4fW2Rrc9P-svvXyR5WQ=="
+            />
+          </div>
+          <div class="common_rcp_caption">
+            <div class="common_rcp_caption_tit line2">[로켓프레시] 집반찬연구소 콩나물무침</div>
+          </div>
+          <div class="price_box" style="padding-top: 4px; text-align: left">
+            <strong class="common_rcp_caption_price">3,800<small>원</small></strong>
+            <div class="common_sp_caption_icon2">
+              <img src="https://recipe1.ezmember.co.kr/img/mobile/2022/icon_rocket.png" alt="로켓배송" width="66px" />
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="common_rcp_list_li" style="margin-right: 10px; width: 141px">
+        <a
+          href="https://ad.planbplus.co.kr/adlanding/?adid=429&amp;subid=10000recipe17&amp;landing_url=https%3A%2F%2Flink.coupang.com%2Fre%2FAFFSDP%3Flptag%3DAF0831180%26subid%3D10000recipe17%26pageKey%3D7485587248%26itemId%3D19563734640%26vendorItemId%3D86671695521%26traceid%3DV0-153-d88274155b1342f1%26requestid%3D20240201112448761120127677%26token%3D31850B%257CGM&amp;adtype=2"
+          target="_blank"
+          class="common_rcp_link"
+        >
+          <div class="common_rcp_thumb">
+            <img
+              src="https://ads-partners.coupang.com/image1/xdZ323qgGgJSdkDGxT5-L7BF8T6ORBXiKkbh6e7hmn3-iOKlgBpopU27i61JZsS9iTdEmfV2P_tUdUf92vQq4efNdcQ3MLqZdzuw1UsW45UB4KgXFB3lZHCWj9ynMq1LDyM9vla11bdXQO6U09T39kGHQOMsyezcPWSdOpLnmFnqR1eTHa_Cd-0KLMSv6YHjcXvVD1jIJjPrkzEdEaejyj7_Bbx3iXERoa5KUZ7wPqjvwbk4P2g8elbFtYHS8M6LdzvLUGPpf6X62e6JkrMI6Q1piJj4qg=="
+            />
+          </div>
+          <div class="common_rcp_caption">
+            <div class="common_rcp_caption_tit line2">[로켓프레시] 반찬천국 콩나물 무침</div>
+          </div>
+          <div class="price_box" style="padding-top: 4px; text-align: left">
+            <strong class="common_rcp_caption_price">5,100<small>원</small></strong>
+            <div class="common_sp_caption_icon2">
+              <img src="https://recipe1.ezmember.co.kr/img/mobile/2022/icon_rocket.png" alt="로켓배송" width="66px" />
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="common_rcp_list_li" style="margin-right: 10px; width: 141px">
+        <a
+          href="https://ad.planbplus.co.kr/adlanding/?adid=429&amp;subid=10000recipe17&amp;landing_url=https%3A%2F%2Flink.coupang.com%2Fre%2FAFFSDP%3Flptag%3DAF0831180%26subid%3D10000recipe17%26pageKey%3D6339792746%26itemId%3D13295426328%26vendorItemId%3D80552815130%26traceid%3DV0-153-32f7a5404b2c12d4%26requestid%3D20240201112448761120127677%26token%3D31850B%257CGM&amp;adtype=2"
+          target="_blank"
+          class="common_rcp_link"
+        >
+          <div class="common_rcp_thumb">
+            <img
+              src="https://ads-partners.coupang.com/image1/mmnu7dZRZh9CUDapmqz1qdveB4jFYDIcoi8tR0oIIklf38ubjlHV946MpC1-65rxankXjHZ8uLRTY0nw4cpiwycJoaX0iuoF2_BL0sN0ZMXNTn8t1q0HDvqC56QUNy75LT9MyvtxS2Ol9KWnGIUlK9CwO0s52PkohRcMzK2j7lQpt-fgSX3iz9eDv6QT5NU6DWZdkowYFIT2GDATyNitUl9r10F5ocsHdpNZ2VrTKbZFXVKXHnJ-EhvZt1jejJbaqcRH7GNgBhZcsEvi6PcmLeuoh1cesUS2fvBMS7-uIFFwiyF6pkJ1Ci3GIVVDtmA="
+            />
+          </div>
+          <div class="common_rcp_caption">
+            <div class="common_rcp_caption_tit line2">[당일조리] 아삭아삭 빨간양념으로 더 입맛나는 매콤콩나물무침 400g</div>
+          </div>
+          <div class="price_box" style="padding-top: 4px; text-align: left">
+            <strong class="common_rcp_caption_price">10,900<small>원</small></strong>
+            <div class="common_sp_caption_icon2"></div>
+          </div>
+        </a>
+      </li>
+      <li class="common_rcp_list_li" style="margin-right: 10px; width: 141px">
+        <a
+          href="https://ad.planbplus.co.kr/adlanding/?adid=429&amp;subid=10000recipe17&amp;landing_url=https%3A%2F%2Flink.coupang.com%2Fre%2FAFFSDP%3Flptag%3DAF0831180%26subid%3D10000recipe17%26pageKey%3D6243199536%26itemId%3D12613951373%26vendorItemId%3D79881693066%26traceid%3DV0-153-5d8204f689021c3d%26requestid%3D20240201112448761120127677%26token%3D31850B%257CGM&amp;adtype=2"
+          target="_blank"
+          class="common_rcp_link"
+        >
+          <div class="common_rcp_thumb">
+            <img
+              src="https://ads-partners.coupang.com/image1/b1Lx0NLFNQ6xjrCNb8nOKMV3T2Dzz1GuPrMpLkYHOJPVnI7WSkA_aBVsYibcZx7v6_uWt03WuPakKwqQhu8dpwti62cEls2_xlfy8dPh3zZYDEGCxbUXwHviVc-IL1FU1E3DDkgNDpaYl3V0hKxWvubmqpkpoB4Q4mPkGeD0vCuPECmKyKwa7KrAeJMndXIn_9Ezl_r_JNrJ6hAq94XDTcNjGJpPjtTUjTz11q0LcDPTwhH_14Ep-nk6s2ejFnxxxN1SjzHkzf26uLK6zMDG_-TLJz5k5aUIZSquRctdSv11LWegYIm1MqwxKMCb"
+            />
+          </div>
+          <div class="common_rcp_caption">
+            <div class="common_rcp_caption_tit line2">고향맛김치 맛있는 가정식 매콤 콩나물 무침 주문</div>
+          </div>
+          <div class="price_box" style="padding-top: 4px; text-align: left">
+            <strong class="common_rcp_caption_price">7,900<small>원</small></strong>
+            <div class="common_sp_caption_icon2"></div>
+          </div>
+        </a>
+      </li>
+      <li class="common_rcp_list_li" style="margin-right: 10px; width: 141px">
+        <a
+          href="https://ad.planbplus.co.kr/adlanding/?adid=429&amp;subid=10000recipe17&amp;landing_url=https%3A%2F%2Flink.coupang.com%2Fre%2FAFFSDP%3Flptag%3DAF0831180%26subid%3D10000recipe17%26pageKey%3D7485587248%26itemId%3D19667398676%26vendorItemId%3D86773042583%26traceid%3DV0-153-d88274155b1342f1%26requestid%3D20240201112448761120127677%26token%3D31850B%257CGM&amp;adtype=2"
+          target="_blank"
+          class="common_rcp_link"
+        >
+          <div class="common_rcp_thumb">
+            <img
+              src="https://ads-partners.coupang.com/image1/4p6B6StEsLUmzmYW4uLc47nI8mXvsfguUROlV9J93BYXDJEwASnrzV5ZOkM1gtHQ56J55544pyuJ8vJeO491P9WwTyLHf5Zau3K6abuIY31LxPM97ovaV5zjzrBEcGsn2wvu9obaedHZtmMhBybvZ7nLuja4qyDGpZ6IANJE6OZi-YXqrsl3JklWtcpQKEFUdHX0Gl2whCoPlep1axMutCOrICnGECnerTpWLimcS-1DFqZDni1unzhiaP0REkp543zzwv27va0bj66IzuBf1APhy3BBjUoRKFXa3sYL8BVzZw=="
+            />
+          </div>
+          <div class="common_rcp_caption">
+            <div class="common_rcp_caption_tit line2">[로켓프레시] 반찬천국 콩나물 무침</div>
+          </div>
+          <div class="price_box" style="padding-top: 4px; text-align: left">
+            <strong class="common_rcp_caption_price">9,890<small>원</small></strong>
+            <div class="common_sp_caption_icon2">
+              <img src="https://recipe1.ezmember.co.kr/img/mobile/2022/icon_rocket.png" alt="로켓배송" width="66px" />
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="common_rcp_list_li" style="margin-right: 10px; width: 141px">
+        <a
+          href="https://ad.planbplus.co.kr/adlanding/?adid=429&amp;subid=10000recipe17&amp;landing_url=https%3A%2F%2Flink.coupang.com%2Fre%2FAFFSDP%3Flptag%3DAF0831180%26subid%3D10000recipe17%26pageKey%3D6750234725%26itemId%3D19272751773%26vendorItemId%3D86387909084%26traceid%3DV0-153-e19d272aa137e75f%26requestid%3D20240201112448761120127677%26token%3D31850B%257CGM&amp;adtype=2"
+          target="_blank"
+          class="common_rcp_link"
+        >
+          <div class="common_rcp_thumb">
+            <img
+              src="https://ads-partners.coupang.com/image1/Xy3pUGZ5qvzSA1iPX56bPCS4a6Exd4zPLCfBe8qRWVNm0q4tUhrdeAkCpgiFgSXheondRYTHRseFtPo5qVyKS2iSVnmTYFUkAm83Th6U8QEuoPXIm9vJzG0a8EVdZr4dBOfP8k560fefv0-nyIdzJH7Azxc6B_GMALRApmUmjWxo8BHropH6fGjkSyvl7KV0c5r4dkKeiGPcqszaJavsEk1Xa0sGsB8MuHi1AjcTuka3sBJZY3bSdH9aZnKINLMZJn6wEAZMt1bDDCZuSr_cUddYbIpdwsWiQ-mDWmnGsA=="
+            />
+          </div>
+          <div class="common_rcp_caption">
+            <div class="common_rcp_caption_tit line2">집반찬연구소 매콤 콩나물 무침</div>
+          </div>
+          <div class="price_box" style="padding-top: 4px; text-align: left">
+            <strong class="common_rcp_caption_price">35,600<small>원</small></strong>
+            <div class="common_sp_caption_icon2">
+              <img src="https://recipe1.ezmember.co.kr/img/mobile/2022/icon_rocket.png" alt="로켓배송" width="66px" />
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="common_rcp_list_li" style="margin-right: 10px; width: 141px">
+        <a
+          href="https://ad.planbplus.co.kr/adlanding/?adid=429&amp;subid=10000recipe17&amp;landing_url=https%3A%2F%2Flink.coupang.com%2Fre%2FAFFSDP%3Flptag%3DAF0831180%26subid%3D10000recipe17%26pageKey%3D6291415679%26itemId%3D12964651826%26vendorItemId%3D80552526308%26traceid%3DV0-153-839dce8174354285%26requestid%3D20240201112448761120127677%26token%3D31850B%257CGM&amp;adtype=2"
+          target="_blank"
+          class="common_rcp_link"
+        >
+          <div class="common_rcp_thumb">
+            <img
+              src="https://ads-partners.coupang.com/image1/KGedTJLdvdNgAU6zKEwOqMDsbH2xvOUmTzaEIYcyyBcu1Tn5d9cTSZrbOSF9iU4Fdcs-w372ZaTvEVK7_-1M5Yl3D9LuUcA9sRnP-MJHOdEN-djA1BgaUaovaas70SDc4eIVu5125EYPoTAKTwaelyFl9WNjMVlVgptUH80X7iO8uxAXoJIxcAh1VrKhy9OZMTc4GYx1ITCMRPif9C_t8WyQY_xKC2LHBoOGJctP4LvMHZFg7H2jSUNnF2L2fS26OIsqqOwDqbMkNcYviTM7VF-lI9NfKLbDPmNV3cHp8nZQfgZYhngSnyT_PbZdaZI="
+            />
+          </div>
+          <div class="common_rcp_caption">
+            <div class="common_rcp_caption_tit line2">[당일조리] 아삭담백한, 콩나물무침 400g 건강 아이반찬</div>
+          </div>
+          <div class="price_box" style="padding-top: 4px; text-align: left">
+            <strong class="common_rcp_caption_price">10,900<small>원</small></strong>
+            <div class="common_sp_caption_icon2"></div>
+          </div>
+        </a>
+      </li>
+    </ul>
+    <div class="s_list_ul_arrow"></div>
+  </div>
+</div>
+<div class="view_notice">
+  <p class="view_notice_date"><b>등록일 : 2016-08-26</b> <b>수정일 : 2017-11-07</b></p>
+  <span>저작자의 사전 동의 없이 이미지 및 문구의 무단 도용 및 복제를 금합니다.</span>
+</div>

@@ -1,4 +1,4 @@
-package com.example.googoos.domain.food.cooking.dto;
+package com.example.googoos.domain.cooking.dto;
 
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;

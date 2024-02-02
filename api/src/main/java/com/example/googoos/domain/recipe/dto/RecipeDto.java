@@ -1,19 +1,17 @@
-package com.example.googoos.domain.food.cooking.dto;
+package com.example.googoos.domain.recipe.dto;
 
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
-public class CookingRecipeDto {
+public class RecipeDto {
     private Long id;
     private Integer step;
     private String description;
     private String notice;
 
     @QueryProjection
-    public CookingRecipeDto(Long id, Integer step, String description, String notice) {
+    public RecipeDto(Long id, Integer step, String description, String notice) {
         this.id = id;
         this.step = step;
         this.description = description;

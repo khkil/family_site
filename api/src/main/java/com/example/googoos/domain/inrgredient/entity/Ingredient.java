@@ -1,5 +1,6 @@
-package com.example.googoos.domain.food.cooking.entity;
+package com.example.googoos.domain.inrgredient.entity;
 
+import com.example.googoos.domain.cooking.entity.Cooking;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,14 +12,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class CookingIngredient {
+public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String ingredientName;
 
-    private String description;
+    private String unit;
 
     @ManyToOne
     private IngredientCategory ingredientCategory;

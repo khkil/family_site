@@ -1,4 +1,4 @@
-package com.example.googoos.domain.food.cooking.entity;
+package com.example.googoos.domain.cooking.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,13 +13,13 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-public class IngredientCategory {
+public class CookingCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String categoryName;
 
-    @OneToMany(mappedBy = "ingredientCategory")
-    private List<CookingIngredient> ingredients;
+    @OneToMany(mappedBy = "cookingCategory")
+    private List<Cooking> cookingList;
 }
