@@ -1,9 +1,10 @@
+import Header from "@/components/Header";
+import LayerPopup from "@/components/LayerPopup";
 import Layout from "@/components/Layout";
 import { fetchCookingDetail, fetchCookingIngredients, fetchCookingRecipe } from "@/service/cookService";
-import { useHeader } from "@/stores/headerStore";
 import { CookingDetail, IngredientCategory, Recipe } from "@/types/foodType";
 import { GetServerSideProps } from "next";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Ingredients from "../_components/CookingIngredients";
 import CookingRecipe from "../_components/CookingRecipe";
 import CookingDetailMenuTabs from "../_components/CookingTabs";
@@ -32,20 +33,31 @@ export const getServerSideProps: GetServerSideProps<Props> = async (context) => 
 };
 
 export default function CookingDetailPage({ cookingDetail: { id, cookingName }, ingredientCategories, recipes }: Props) {
-  const { setHeader, resetHeader } = useHeader();
   const [tabIndex, setTabIndex] = useState<number>(0);
-
-  useEffect(() => {
-    setHeader({ title: cookingName, subTitle: "재료 / 조리과정" });
-    return () => {
-      resetHeader();
-    };
-  }, []);
+  const [canModify, setCanModify] = useState<boolean>(false);
+  const [openedModifyPopup, setOpenedModifyPopup] = useState<boolean>(false);
 
   return (
     <Layout>
+      <Header
+        title={cookingName}
+        subTitle={!canModify ? "재료 및 조리과정" : "내용 수정"}
+        leftIcon={
+          !canModify
+            ? undefined
+            : {
+                title: "취소",
+                onClick: () => setCanModify(false),
+              }
+        }
+        rightIcon={{
+          title: !canModify ? "수정" : "완료",
+          onClick: () => (!canModify ? setCanModify(true) : setOpenedModifyPopup(true)),
+        }}
+      />
       <CookingDetailMenuTabs tabIndex={tabIndex} setTabIndex={setTabIndex} />
-      {tabIndex === 0 ? <Ingredients ingredientCategories={ingredientCategories} /> : <CookingRecipe recipes={recipes} />}
+      {tabIndex === 0 ? <Ingredients ingredientCategories={ingredientCategories} canModify={canModify} /> : <CookingRecipe recipes={recipes} />}
+      <LayerPopup opened={openedModifyPopup} setOpened={setOpenedModifyPopup} onClick={() => alert(1)} />
     </Layout>
   );
 }

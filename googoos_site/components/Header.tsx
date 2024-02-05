@@ -1,26 +1,47 @@
-import { useHeader } from "@/stores/headerStore";
 import { Link, Navbar } from "konsta/react";
 import { useRouter } from "next/router";
-interface Props {
-  title: string | undefined;
-  subtitle: string;
+interface IconProps {
+  onClick: () => void;
+  title: string;
 }
 
-const Header = () => {
+interface Props {
+  title: string | undefined;
+  subTitle: string | undefined;
+  leftIcon?: IconProps | undefined;
+  rightIcon?: IconProps | undefined;
+}
+
+const Header = ({ title, subTitle, leftIcon, rightIcon }: Props) => {
   const router = useRouter();
-  const { title, subTitle } = useHeader();
 
   return (
     <Navbar
       title={title}
       subtitle={subTitle}
       className="top-0 sticky"
-      onClick={() => router.push("/")}
       left={
-        <Link navbar onClick={() => router.back()}>
-          <LeftIcon />
-          <p className="p-1">뒤로</p>
+        <Link navbar onClick={leftIcon?.onClick ? () => leftIcon.onClick() : () => router.back()}>
+          <div>
+            {leftIcon?.title ? (
+              leftIcon?.title
+            ) : (
+              <div className="flex items-center">
+                <LeftIcon />
+                <p className="ml-1">뒤로</p>
+              </div>
+            )}
+          </div>
         </Link>
+      }
+      right={
+        rightIcon ? (
+          <Link navbar onClick={rightIcon.onClick}>
+            <p className="p-1">{rightIcon.title}</p>
+          </Link>
+        ) : (
+          <></>
+        )
       }
     />
   );

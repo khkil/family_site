@@ -113,8 +113,7 @@ public class CookingService {
                 String[] splits = ingredient.text().split(" ");
 
                 String ingredientName = splits[0];
-                String ingredientUnit = splits[2];
-
+                String ingredientUnit = splits.length < 3 ? "" : splits[2];
 
                 Ingredient cookingIngredient = Ingredient
                         .builder()
@@ -138,7 +137,7 @@ public class CookingService {
         Elements elements = document.getElementsByClass("view_step_cont");
         for (Element element : elements) {
             Element recipeEl = element.getElementsByClass("media-body").get(0);
-            
+
             String description = recipeEl.ownText();
             String subDescription = recipeEl.getElementsByClass("add_material").text();
 

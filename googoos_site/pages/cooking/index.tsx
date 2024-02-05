@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import Layout from "@/components/Layout";
 import { fetchCookingList } from "@/service/cookService";
 import { Cooking, CookingCategory } from "@/types/foodType";
@@ -52,6 +53,7 @@ export default function CookingListPage({ cookingCategories }: CategoryProps) {
 
   return (
     <Layout>
+      <Header title={"요리 목록"} subTitle={""} />
       <div className="mt-5">
         <Searchbar
           placeholder={"검색"}

@@ -1,16 +1,12 @@
-import { App, Page } from "konsta/react";
+import { App, KonstaProvider, Page } from "konsta/react";
 import { ReactNode } from "react";
-import Header from "./Header";
 
-const Layout = ({ children }: { children: ReactNode }) => {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <App theme="ios">
-      <Page>
-        <Header />
-        {children}
-      </Page>
-    </App>
+    <KonstaProvider theme="ios">
+      <App theme="ios" className="ios">
+        <Page>{children}</Page>
+      </App>
+    </KonstaProvider>
   );
-};
-
-export default Layout;
+}

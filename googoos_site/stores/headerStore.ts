@@ -4,6 +4,10 @@ import { persist } from "zustand/middleware";
 interface State {
   title: string;
   subTitle: string;
+  rightIcon?: {
+    onClick: () => void;
+    title: string;
+  };
 }
 
 interface Actions {
