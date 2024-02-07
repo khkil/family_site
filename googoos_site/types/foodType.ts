@@ -23,7 +23,7 @@ export declare interface IngredientCategory {
 export declare interface Ingredient {
   id: number;
   ingredientName: string;
-  description: string;
+  unit: string;
 }
 
 export declare interface Recipe {

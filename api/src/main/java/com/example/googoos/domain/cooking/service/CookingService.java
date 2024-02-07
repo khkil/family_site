@@ -3,6 +3,8 @@ package com.example.googoos.domain.cooking.service;
 import com.example.googoos.domain.cooking.dto.CookingDetailDto;
 import com.example.googoos.domain.cooking.dto.CookingGenerateDto;
 import com.example.googoos.domain.cooking.dto.CookingListDto;
+import com.example.googoos.domain.cooking.dto.CookingRequestDto;
+import com.example.googoos.domain.inrgredient.dto.IngredientDto;
 import com.example.googoos.domain.inrgredient.repository.IngredientCategoryRepository;
 import com.example.googoos.domain.recipe.dto.RecipeDto;
 import com.example.googoos.domain.cooking.entity.Cooking;
@@ -26,6 +28,9 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -45,6 +50,11 @@ public class CookingService {
 
     public CookingDetailDto findById(Long id) {
         return cookingRepository.findByIdCustom(id).orElseThrow(() -> new IllegalArgumentException("요리정보를 찾을수 없습니다."));
+    }
+
+    @Transactional
+    public void updateById(Long id, CookingRequestDto params) {
+        
     }
 
 
@@ -67,7 +77,7 @@ public class CookingService {
 
             // 카테고리가 없다면 카테고리 생성
             CookingCategory cookingCategory = cookingCategoryRepository.findByCategoryName(categoryName)
-                    .orElse(cookingCategoryRepository.save(CookingCategory
+                    .orElseGet(() -> cookingCategoryRepository.save(CookingCategory
                             .builder()
                             .categoryName(categoryName)
                             .build())

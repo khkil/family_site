@@ -4,6 +4,8 @@ import com.example.googoos.common.ApiResponse;
 import com.example.googoos.domain.cooking.dto.CookingDetailDto;
 import com.example.googoos.domain.cooking.dto.CookingGenerateDto;
 import com.example.googoos.domain.cooking.dto.CookingListDto;
+import com.example.googoos.domain.cooking.dto.CookingRequestDto;
+import com.example.googoos.domain.cooking.entity.Cooking;
 import com.example.googoos.domain.recipe.dto.RecipeDto;
 import com.example.googoos.domain.cooking.service.CookingService;
 import com.example.googoos.domain.inrgredient.dto.IngredientDto;
@@ -34,6 +36,12 @@ public class CookingController {
     @PostMapping("/generate-cooking")
     public ResponseEntity<ApiResponse<?>> generateRecipe(@RequestBody CookingGenerateDto generateDto) {
         cookingService.generateRecipe(generateDto);
+        return ResponseEntity.ok(ApiResponse.createSuccessWithNoContent());
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<ApiResponse<?>> generateRecipe(@PathVariable Long id, @RequestBody CookingRequestDto params) {
+        cookingService.updateById(id, params);
         return ResponseEntity.ok(ApiResponse.createSuccessWithNoContent());
     }
 }

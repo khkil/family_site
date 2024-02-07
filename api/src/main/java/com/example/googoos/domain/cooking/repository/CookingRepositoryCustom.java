@@ -1,6 +1,7 @@
 package com.example.googoos.domain.cooking.repository;
 
 import com.example.googoos.domain.cooking.dto.CookingDetailDto;
+import com.example.googoos.domain.cooking.dto.CookingRequestDto;
 import com.example.googoos.domain.inrgredient.dto.IngredientDto;
 import com.example.googoos.domain.cooking.dto.CookingListDto;
 import com.example.googoos.domain.recipe.dto.RecipeDto;
@@ -12,4 +13,6 @@ public interface CookingRepositoryCustom {
     List<CookingListDto> findAllGroupByCategory();
 
     Optional<CookingDetailDto> findByIdCustom(Long id);
+
+    void updateById(Long id, CookingRequestDto params);
 }

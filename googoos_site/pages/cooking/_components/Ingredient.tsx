@@ -15,8 +15,8 @@ const Ingredients = ({ ingredientCategories, canModify }: Props): ReactElement =
           <BlockTitle>{categoryName}</BlockTitle>
           {!canModify ? (
             <List strong inset>
-              {ingredients.map(({ id, ingredientName, description }: Ingredient) =>
-                !canModify ? <ListItem key={`${id}`} title={ingredientName} subtitle={description} /> : <IngredientInput />
+              {ingredients.map(({ id, ingredientName, unit }: Ingredient) =>
+                !canModify ? <ListItem key={`${id}`} title={ingredientName} subtitle={unit} /> : <IngredientInput />
               )}
             </List>
           ) : (
@@ -28,11 +28,11 @@ const Ingredients = ({ ingredientCategories, canModify }: Props): ReactElement =
   );
 };
 
-const IngredientInput = ({ id, ingredientName, description }: Ingredient) => {
+const IngredientInput = ({ id, ingredientName, unit }: Ingredient) => {
   return (
     <List strongIos insetIos>
       <ListInput type="text" placeholder="재료명" value={ingredientName} />
-      <ListInput type="text" placeholder="양" value={description} />
+      <ListInput type="text" placeholder="양" value={unit} />
     </List>
   );
 };

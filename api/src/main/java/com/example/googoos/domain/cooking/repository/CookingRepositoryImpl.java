@@ -56,4 +56,24 @@ public class CookingRepositoryImpl implements CookingRepositoryCustom {
                 .stream()
                 .findAny();
     }
+
+    @Override
+    public void updateById(Long id, CookingRequestDto params) {
+        List<IngredientDto.Ingredient> ingredients = params.getIngredients();
+        List<RecipeDto> recipes = params.getRecipes();
+
+        ingredients.forEach(v -> jpaQueryFactory.update(ingredient)
+                .set(ingredient.ingredientName, v.getIngredientName())
+                .set(ingredient.unit, v.getUnit())
+                .where(ingredient.cooking.id.eq(id))
+                .execute()
+        );
+
+        recipes.forEach(v -> jpaQueryFactory.update(recipe)
+                .set(recipe.description, v.getDescription())
+                .set(recipe.subDescription, v.getSubDescription())
+                .where(recipe.cooking.id.eq(id))
+                .execute()
+        );
+    }
 }

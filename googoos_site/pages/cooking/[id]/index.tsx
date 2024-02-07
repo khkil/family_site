@@ -5,9 +5,9 @@ import { fetchCookingDetail, fetchCookingIngredients, fetchCookingRecipe } from 
 import { CookingDetail, IngredientCategory, Recipe } from "@/types/foodType";
 import { GetServerSideProps } from "next";
 import { useState } from "react";
-import Ingredients from "../_components/CookingIngredients";
 import CookingRecipe from "../_components/CookingRecipe";
 import CookingDetailMenuTabs from "../_components/CookingTabs";
+import Ingredient from "../_components/Ingredient";
 
 interface Props {
   cookingDetail: CookingDetail;
@@ -37,6 +37,14 @@ export default function CookingDetailPage({ cookingDetail: { id, cookingName }, 
   const [canModify, setCanModify] = useState<boolean>(false);
   const [openedModifyPopup, setOpenedModifyPopup] = useState<boolean>(false);
 
+  const modifyCooking = async () => {
+    recipes = [];
+    /*  const r = await fetchModifyCooking(id, {
+      ingredients: [],
+      recipes: [],
+    }); */
+  };
+
   return (
     <Layout>
       <Header
@@ -56,8 +64,8 @@ export default function CookingDetailPage({ cookingDetail: { id, cookingName }, 
         }}
       />
       <CookingDetailMenuTabs tabIndex={tabIndex} setTabIndex={setTabIndex} />
-      {tabIndex === 0 ? <Ingredients ingredientCategories={ingredientCategories} canModify={canModify} /> : <CookingRecipe recipes={recipes} />}
-      <LayerPopup opened={openedModifyPopup} setOpened={setOpenedModifyPopup} onClick={() => alert(1)} />
+      {tabIndex === 0 ? <Ingredient ingredientCategories={ingredientCategories} canModify={canModify} /> : <CookingRecipe recipes={recipes} />}
+      <LayerPopup opened={openedModifyPopup} setOpened={setOpenedModifyPopup} onClick={modifyCooking} />
     </Layout>
   );
 }

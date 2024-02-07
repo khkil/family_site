@@ -22,13 +22,13 @@ public class IngredientDto {
     public static class Ingredient {
         private Long id;
         private String ingredientName;
-        private String description;
+        private String unit;
 
         @QueryProjection
-        public Ingredient(Long id, String ingredientName, String description) {
+        public Ingredient(Long id, String ingredientName, String unit) {
             this.id = id;
             this.ingredientName = ingredientName;
-            this.description = description;
+            this.unit = unit;
         }
     }
 }
